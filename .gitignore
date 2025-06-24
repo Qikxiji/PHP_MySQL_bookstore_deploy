@@ -1,0 +1,7 @@
+# in release versions secret file with root password for mysql 
+#shouldn't be pushed to the repository!
+
+#Use next command to cancel git file tracking and uncomment last string in release/ 
+#git rm --cached db/root_password.txt
+
+#db/root_password.txt
