@@ -1,48 +1,33 @@
 services:
   nginx:
-  
-    container_name: nginx_bookstore_compose
-
+    container_name: nginx_bookstore
     build:
       context: .
-
     ports:
       - 127.0.0.1:8080:8080
-
     networks:
       - bookstore-net
 
 
-
   mysql:
-
-    container_name: mysql_bookstore_compose
-
+    container_name: mysql_bookstore
     build:
       context: ./db
-
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
-    
     volumes:
       - mysql_data:/var/lib/mysql
-
     networks:
       bookstore-net:
         ipv4_address: 172.16.16.16
-
     secrets:
       - mysql_root_password
 
 
-
 networks:
   bookstore-net:
-
     driver: bridge
-
     enable_ipv6: false
-
     ipam:
       config:
         - subnet: 172.16.16.0/24
